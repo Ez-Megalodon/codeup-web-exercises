@@ -9,13 +9,12 @@ let c = ++a;
 // answer is a = 3, b = 1, c = 3
 let d = "hello";
 let e = false;
-
 d++;
 e++;
 // d++ would be NaN because a string is not a number. e++ would return as a 1 since false
 // is seen as false=0 and true=1.
 
-var perplexed; // perplexed is undefined (no value is assigned)
+let perplexed; // perplexed is undefined (no value is assigned)
 perplexed + 2;
 // it would return as undefined because the variable "perplexed" was never
 // initialized and you cannot add a number to a undefined variable.
@@ -24,8 +23,8 @@ perplexed + 2;
 // price.toFixed(2);
 // // it would print out as 2.70
 //
-// let price = "2.7";
-// price.toFixed(2);
+let price = parseFloat("2.7");
+price.toFixed(2);
 // it would print out as NaN because it is a string
 
 isNaN(0)
@@ -43,7 +42,7 @@ isNaN("1")
 isNaN("3.145")
 //false
 isNaN(Number.MAX_VALUE)
-//undefined
+//false
 isNaN(Infinity)
 //false
 isNaN("true")
@@ -54,6 +53,7 @@ isNaN("false")
 //true
 isNaN(false)
 //false
+
 // to illustrate why the isNaN() function is needed:
 NaN == NaN
 
@@ -111,7 +111,7 @@ let indexOfc = sample.indexOf("c");
 
 //Find the index of "C" using .indexOf().
 let indexOfC = sample.indexOf("C");
-// 6
+// the index of "C": 6
 
 //Retrieve a substring that contains only the word "Codeup" by using indexOf() and substring().
 let sampleSubString = newSample.substring(newSample.indexOf("C"), newSample.indexOf("p")+1);
