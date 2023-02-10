@@ -16,7 +16,7 @@ e++;
 
 let perplexed; // perplexed is undefined (no value is assigned)
 perplexed + 2;
-// it would return as undefined because the variable "perplexed" was never
+// it would return as undefined because the letiable "perplexed" was never
 // initialized and you cannot add a number to a undefined variable.
 
 // let price = 2.7;
@@ -86,6 +86,9 @@ NaN == NaN
 !!"0"
 //true
 
+
+
+
 let sample = `Hello Codeup`;
 
 //Use .length to find the number of characters in the string.
@@ -95,11 +98,12 @@ console.log(sampleLength);
 //Try to make the sample string all upper or all lower case.
 let sampleLower = sample.toLowerCase();
 console.log(sampleLower);
-let letsampleUpper = sample.toUpperCase();
+let sampleUpper = sample.toUpperCase();
 
 //Update the variable sample via concatenation so that it contains "Hello Codeup Students".
+sampleBetter = `${sample} Students`;
 sample += ` Students`;
-console.log(sample);
+console.log(sample, sampleBetter);
 
 //Replace "Students" with "Class".
 let newSample = sample.replace("Students", "Class");
@@ -126,7 +130,7 @@ let totalDaysRented = daysRentedHercules + daysRentedMermaid + daysRentedBear;
 let totalRentalFee = totalDaysRented * dailyRentalFee;
 
 //total you have to pay in rental fees
-console.log("$" + totalRentalFee);
+console.log(`$${totalRentalFee}`);
 
 //weekly pay problem
 let googlePayRate = 400;
@@ -157,23 +161,22 @@ let premiumMember = false;
 let moreThanTwoItems = true;
 let offerExpired = false;
 
-if (premiumMember && !offerExpired || moreThanTwoItems && !offerExpired) {
-    console.log("Offer applied");
-} else {
+if ((premiumMember || moreThanTwoItems) && offerExpired) {
     console.log("Sorry the discount cannot be applied.");
+} else {
+    console.log("Offer applied");
 }
 
 // 4
-var username = 'codeup';
-var password = 'notastrongpassword';
+let username = 'codeup';
+let password = 'notastrongpassword';
 
 let passwordMinimumChars = password.length >= 5;
-let passwordIncludesUsername = username.length > 0;
-let usernameMaximumChars = username.length <= 20;
-let whiteSpace =  password.indexOf(" ") >= 0 && username.indexOf(" ") >= 0;
-
+let passwordIncludesUsername = password.indexOf(username) >= 0;
+let usernameMaxChars = username.length <= 20;
+let whiteSpace = username.startsWith(" ") >= 0 && username.endsWith(" ") >= 0 && password.startsWith(" ") >= 0 && password.endsWith(" ") >= 0;
 console.log(`The password is at least 5 chars: ${passwordMinimumChars}
 The password includes the username: ${passwordIncludesUsername}
-The username is more than 20 chars: ${usernameMaximumChars}
+The username is more than 20 chars: ${usernameMaxChars}
 Does the username or password have a space: ${whiteSpace}`);
 
