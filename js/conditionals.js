@@ -22,27 +22,27 @@
      * console.logging the function's return value
      */
 
-    const analyzeColor = (color) => {
-        if (color === "blue") {
-            return "The sky is blue!";
-        } else if (color === "red") {
-            return "Strawberries are red!";
-        } else if (color === "orange") {
-            return "Oranges are Orange!";
-        } else if (color === "yellow") {
-            return "Banana's are yellow!";
-        } else if (color === "green") {
-            return "Tree's are green!";
-        } else if (color === "indigo") {
-            return "Indigo is indigo!";
-        } else if (color === "violet") {
-            return "Violets are violet!";
-        } else {
-            return "Sorry I don't know that color!";
-        }
-    }
-
-    console.log(analyzeColor("violet"));
+    // const analyzeColor = (color) => {
+    //     if (color === "blue") {
+    //         return "The sky is blue!";
+    //     } else if (color === "red") {
+    //         return "Strawberries are red!";
+    //     } else if (color === "orange") {
+    //         return "Oranges are Orange!";
+    //     } else if (color === "yellow") {
+    //         return "Banana's are yellow!";
+    //     } else if (color === "green") {
+    //         return "Tree's are green!";
+    //     } else if (color === "indigo") {
+    //         return "Indigo is indigo!";
+    //     } else if (color === "violet") {
+    //         return "Violets are violet!";
+    //     } else {
+    //         return `Sorry I don't know the ${color} color!`;
+    //     }
+    // }
+    //
+    // console.log(analyzeColor("cyan"));
 
 
 // Don't change the next two lines!
@@ -50,15 +50,15 @@
 // - `colors`: a list of the colors of the rainbow
 // - `randomColor`: contains a single random color value from the list (this
 //                  will contain a different color every time the page loads)
-    var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-    var randomColor = colors[Math.floor(Math.random() * colors.length)];
+    let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+    let randomColor = colors[Math.floor(Math.random() * colors.length)];
     /**
      * TODO:
      * Pass the `randomColor` variable to your 'analyzeColor' function and console.log the results.
      * You should see a different message every time you refresh the page
      */
 
-    console.log(analyzeColor(randomColor));
+    // console.log(analyzeColor(randomColor));
 
     /**
      * TODO:
@@ -66,17 +66,15 @@
      */
 
 
-    const analyzeColorSwitch = (userColor) => {
+    const analyzeColor = (color) => {
 
-        switch (userColor) {
+        switch (color) {
             case "blue":
-                alert("The sky is blue!");
-                break;
+                return "The sky is blue!";
             case "red":
-                alert("Strawberries are red!");
-                break;
+                return "Strawberries are red!";
             default:
-                alert("I am sorry, I do not know that color!");
+                return `I am sorry, I do not know about ${color}`;
         }
     }
 
@@ -89,7 +87,7 @@
      */
 
     let userColorPrompt = prompt("What is your favorite color?");
-    analyzeColorSwitch(userColorPrompt);
+    alert(analyzeColor(userColorPrompt.toLowerCase()));
 
     /* ########################################################################## */
 
@@ -146,8 +144,8 @@
             return `Lucky number:${luckyNumber}! It's FREE! Total Price:$${total}`;
         }
     }
-    let discountedPrice = calculateTotal(5, 100)
-    console.log(discountedPrice);
+    // let discountedPrice = calculateTotal(5, 100)
+    // console.log(discountedPrice);
 
     /**
      * TODO:
@@ -191,10 +189,10 @@
         if (confirmed) {
             let userNumber = parseInt(prompt("Please enter a number."));
             //Did user enter a integer?
-            if (Number.isInteger(userNumber)) {
+            if (isNumericAndNotNaN(userNumber)) {
 
                 let evenOrOdd = (userNumber % 2 === 0) ? "The number is Even." : "The number is Odd";
-                let plusHundred = userNumber + 100;
+                let plusHundred = `Your number +100 is: ${userNumber + 100}`;
                 let numberType = (userNumber >= 0) ? "The number is a positive number." : "The number is a negative number";
                 alert(evenOrOdd);
                 alert(plusHundred);
@@ -203,10 +201,11 @@
                 alert("Incorrect data type entered. Please use a number.");
             }
         } else {
-            alert("please select 'ok' next time!");
+
         }
 
     }
+
     userNumberCalculation(userConfirm);
 
 })();
