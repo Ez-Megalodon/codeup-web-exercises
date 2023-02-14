@@ -57,6 +57,7 @@ let random = Math.floor((Math.random() * 3) + 1);
  * different result everytime you refresh the page if you are using the random
  * number)
  */
+
 const isTwo = (num) => {
     return num === 2;
 }
