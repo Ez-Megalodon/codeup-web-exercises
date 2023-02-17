@@ -72,4 +72,5 @@ const arrayOfRandomNumbers = (lengthOfArray) =>{
         array.push(newRandomNumber);
     }
     return array;
+
 }

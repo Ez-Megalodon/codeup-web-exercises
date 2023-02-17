@@ -36,13 +36,5 @@
 
     console.log(arrayToUnorderedList(planetsArray));
 
-    // const frontPlanetsList = planetsArray.map(planet => planet + "</li>");
-    // const backPlanetsList = frontPlanetsList.map(planet => "<li>" + planet);
-    // const startPlanetsList = backPlanetsList.unshift("<ul><li>");
-    // const planetList = startPlanetsList.push();
-    //
-    // console.log(planetList);
-
-    console.log(arrayOfRandomNumbers(50));
 
 })();
