@@ -60,3 +60,16 @@ const arrayToUnorderedList = (array) => {
     let first = "<ul><li>" + listedArray;
     return first + "</li></ul>";
 }
+
+//------------make an array with random numbers-------------
+const arrayOfRandomNumbers = (lengthOfArray) =>{
+    const array = [];
+    for (let i = 0; i < lengthOfArray; i++){
+        let newRandomNumber = randomNumber(1, lengthOfArray + 100);
+        while(array.includes(newRandomNumber)){
+            newRandomNumber = randomNumber(1, lengthOfArray + 100);
+        }
+        array.push(newRandomNumber);
+    }
+    return array;
+}

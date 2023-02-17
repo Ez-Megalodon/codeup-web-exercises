@@ -43,4 +43,6 @@
     //
     // console.log(planetList);
 
+    console.log(arrayOfRandomNumbers(50));
+
 })();
