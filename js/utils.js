@@ -54,4 +54,9 @@ const randomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-//-----------------------
+//-----------turn an array into unordered list------------
+const arrayToUnorderedList = (array) => {
+    let listedArray = array.join("</li><li>");
+    let first = "<ul><li>" + listedArray;
+    return first + "</li></ul>";
+}
