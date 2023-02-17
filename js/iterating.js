@@ -64,16 +64,19 @@
      */
 
     console.log("6th todo:");
+
     //return first element of the array
     const firstArrayItem = (array) => {
         return array.at(0);
     }
     console.log(`Element located at first index: ${firstArrayItem(names)}`);
+
     //return second element of array
     const secondArrayItem = (array) => {
         return array.at(1);
     }
     console.log(`Element located at second index: ${secondArrayItem(names)}`);
+
     //return last element in array
     const lastArrayItem = (array) => {
         return array.at(-1);
