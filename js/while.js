@@ -1,4 +1,4 @@
-
+(function() {
 // while loop exercise
 // let i = 2;
 //
@@ -37,3 +37,5 @@ do {
 } while (conesToSell > 0);
 
 console.log(`yay i've sold them all!`)
+
+})();

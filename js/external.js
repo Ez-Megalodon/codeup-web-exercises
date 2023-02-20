@@ -1,4 +1,5 @@
 "use strict";
+(function() {
 
 console.log(`Hello from external JavaScript`);
 
@@ -58,3 +59,5 @@ if ((enoughItems || premiumMember) && offerValid) {
     } else {
         alert(`I'm sorry you do not qualify the offer.`);
 }
+
+})();

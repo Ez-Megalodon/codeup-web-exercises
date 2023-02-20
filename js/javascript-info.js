@@ -1,3 +1,5 @@
+(function() {
+
 // // this is a comment
 // // this is too
 
@@ -22,3 +24,5 @@ console.log()
 let myShoes = "Ariats";
 // const does not allow any changes to its value.
 const myName = `Jason`;
+
+})();

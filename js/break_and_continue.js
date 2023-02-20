@@ -1,4 +1,5 @@
-let userNumber;
+(function() {
+    let userNumber;
 
 while (true) {
     userNumber = parseInt(prompt("Please enter an odd number between 1 and 50"));
@@ -18,3 +19,5 @@ for (let i = 1; i <= 50; i++) {
         console.log(`Here is an odd number: ${i}`);
     }
 }
+
+})();

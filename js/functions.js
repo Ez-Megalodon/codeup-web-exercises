@@ -1,6 +1,7 @@
 "use strict";
+(function() {
 
-/**
+    /**
  * TODO:
  * Create a function called 'sayHello' that takes a parameter 'name'.
  * When called, the function should return a message that says hello to the passed in name.
@@ -132,3 +133,5 @@ let priceDiscounted = applyDiscount(originalPrice, discountPercentage);
 priceDiscounted.toFixed(2);
 
 console.log(`The total price after the discount is: $${priceDiscounted}`);
+
+})();

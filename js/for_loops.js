@@ -1,4 +1,5 @@
-"use-strict";
+"use strict";
+(function() {
 //For Loops Exercises
 //Exercise 1
 //Exercise 2
@@ -39,3 +40,5 @@ for (let i = 1; i <= 9; i++){
 for (let i = 100; i > 0; i -= 5){
     console.log(i);
 }
+
+})();
