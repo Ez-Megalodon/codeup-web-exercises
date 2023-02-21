@@ -1,6 +1,6 @@
 "use strict";
-// IIFE (Immediately-invoked Function Expression) arrow function <-------USE THIS IN MOST, IF NOT ALL .js FILES--------
-
+// IIFE (Immediately-invoked Function Expression) arrow function
+// -------USE THIS IN MOST, IF NOT ALL .js FILES--------
 (() => {
     //all .js code goes here
 })();
