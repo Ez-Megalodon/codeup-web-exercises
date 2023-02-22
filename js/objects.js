@@ -30,9 +30,9 @@
      */
 
     person.sayHello = function (){
-        console.log(`Hello from ${person.firstName} ${person.lastName}`);
+        return `Hello from ${this.firstName} ${this.lastName}`;
     };
-    person.sayHello();
+    console.log(person.sayHello());
 
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -48,7 +48,7 @@
      * and console.log the relevant messages for each person
      */
 
-    let shoppers = [
+    const shoppers = [
         {name: 'Cameron', amount: 180},
         {name: 'Ryan', amount: 250},
         {name: 'George', amount: 320}
@@ -59,10 +59,12 @@
             let discount = (shopper.amount * .12).toFixed(2);
             let discountedAmount = shopper.amount - discount;
             console.log(`${shopper.name} spent: $${shopper.amount.toFixed(2)}
-            Discounted: $${discount}. Total amount owed: $${discountedAmount.toFixed(2)}`);
+            \nDiscounted: $${discount}. Total amount owed: $${discountedAmount.toFixed(2)}`);
+            console.log("------------")
         } else {
             console.log(`${shopper.name} spent: $${shopper.amount.toFixed(2)}
-        This did not qualify for the discount. Total amount owed: $${shopper.amount}`);
+            \nThis did not qualify for the discount. Total amount owed: $${shopper.amount}`);
+            console.log("------------")
         }
     })
 
@@ -129,9 +131,10 @@
      */
 
     books1.forEach((book, i ) =>{
-        console.log(`Book # ${i}`);
+        console.log(`Book # ${(i + 1)}`);
         console.log(`Title: ${book.title}`);
         console.log(`Author: ${book.author.firstName} ${book.author.lastName}`);
+        console.log("------------")
     })
 
     /**
@@ -170,9 +173,10 @@
 
     function showBookInfo(books) {
         books.forEach((book, i) => {
-            console.log(`Book # ${i}`);
+            console.log(`Book # ${(i + 1)}`);
             console.log(`Title: ${book.title}`);
             console.log(`Author: ${book.author.firstName} ${book.author.lastName}`);
+            console.log("------------")
         })
     }
 
