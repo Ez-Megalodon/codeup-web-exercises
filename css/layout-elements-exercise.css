@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;
+    color: gray;
+}
+
+/*header property changes*/
+header {
+    height: 100px;
+    box-shadow: 1px 1px 4px lightgray;
+}
+
+/*main content changes*/
+main{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: rgba(128, 128, 128, 0.31);
+}
+
+.align-self-left {
+    align-self: start;
+}
+
+#text-padding-4 {
+    padding-left: 280px;
+    padding-right: 280px;
+
+}
+#text-padding-5 {
+    font-size: 40px;
+    padding-bottom: 0;
+}
+#text-padding-6 {
+    padding-right: 275px;
+    padding-left: 275px;
+    padding-bottom: 0;
+}
+#large-text-1 {
+    font-size: 40px;
+    padding-right: 150px;
+    padding-bottom: 25px;
+    padding-top: 20px;
+}
+#large-text-2 {
+
+    padding-right: 150px;
+}
+
+.shrink .right {
+    flex: 0 1 80px;
+    justify-content: end;
+}
+footer {
+    padding-top: 80px;
+    padding-bottom: 50px;
+    box-shadow: -2px -2px 2px lightgray;
+    position: relative;
+    z-index: 2;
+}
+
+button {
+    border-radius: 4px;
+    background-color: gray;
+    color: white;
+    border: none;
+    text-align: center;
+    width: 120px;
+    height: 37px;
+
+}
+.dot {
+    height: 100px;
+    width: 100px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+.hero-image {
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 1px 1px 5px gray;
+}
+.footer-row {
+    padding-top: 55px;
+}
+.p-padding {
+    padding-top: 45px;
+    padding-bottom: 20px;
+}
