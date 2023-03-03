@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.left-sidebar, .right-sidebar{
+    flex: 0 1 250px;
+}
+
+.row.list-bottom {
+    padding-top: 25px;
+}
+
+.list-logo {
+    border-radius: 50%;
+    width: 25px;
+    float: left;
+    margin-right: 10px;
+}
+
+.list-logo.float-left{
+    float: left;
+}
+
+.list-logo.float-right{
+    float: right;
+}
+
+.list-logo.float-right.check-mark{
+    float: right;
+    margin-left: 5px;
+}
+
+.list-logo.arrow {
+    border-radius: 50%;
+    width: 25px;
+    float: left;
+    margin-right: 10px;
+}
+
+.nav-list{
+    font-size: 20px;
+    padding: 12px;
+}
+
+.twitter-logo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.button {
+    background-color: #4C9BEF; /* Green */
+    border: none;
+    color: white;
+    padding: 11px 30px;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 35px;
+    font-weight: bold;
+}
+
+.button.follow {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 6px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 35px;
+    font-weight: bold;
+}
+
+.mini-profile-pic {
+    width: 50px;
+    border-radius: 50%;
+    float: left;
+    border: 2px solid white;
+}
+
+.grey-text{
+    color: gray;
+}
+
+.username-logo-padding {
+    padding-left: 12px;
+}
+
+.username-logo-padding.top-bar-name{
+    font-size: 25px;
+}
+.username-logo-padding.center-bar-name{
+    font-size: 25px;
+}
+.center-bar-name-padding{
+    padding-top: 40px;
+}
+
+.list-logo.dot-dot-dot{
+    width: 20px;
+    float: right;
+    padding-top: 14px;
+}
+
+.dot-dot-dot{
+    width: 30px;
+    border-radius: 50%;
+    padding: 3px
+}
+
+.remove-gap {
+    gap: 0;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+.grey-text.username-logo-padding.tweet-count{
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+.grey-text.username-logo-padding {
+    font-size: 15px;
+
+}
+
+.row.shrink.banner-image{
+    padding: 0;
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    gap: 20px;
+}
+
+.image-wrapper {
+    width: 150px;
+    border-radius:50%;
+    float: left;
+    border: 2px solid white;
+    overflow: hidden;
+    position: absolute;
+    top: -70px;
+    left: 20px;
+}
+
+.relative {
+    position: relative;
+}
+
+.button.border {
+    background-color: white;
+    color: black;
+    border: 1px solid #000;
+}
+
+.follow-button-padding {
+    padding-top: 8px;
+}
+.right-sidebar-extended {
+    width: 600px;
+}
+.padding-top-small {
+    padding-top: 10px;
+}
