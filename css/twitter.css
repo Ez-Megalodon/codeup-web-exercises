@@ -12,6 +12,15 @@ body{
     padding-top: 25px;
 }
 
+.border-top {
+    border-top: 1px solid lightgray;
+}
+
+.thin-border {
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
 .list-logo {
     border-radius: 50%;
     width: 25px;
