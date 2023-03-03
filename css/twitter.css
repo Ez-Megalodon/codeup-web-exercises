@@ -19,6 +19,12 @@ body{
     margin-right: 10px;
 }
 
+.list-logo.check-mark {
+    border-radius: 50%;
+    width: 25px;
+    float: right;
+}
+
 .list-logo.float-left{
     float: left;
 }
@@ -97,6 +103,7 @@ body{
 }
 .center-bar-name-padding{
     padding-top: 40px;
+    width: 170px;
 }
 
 .list-logo.dot-dot-dot{
@@ -161,9 +168,56 @@ body{
 .follow-button-padding {
     padding-top: 8px;
 }
+
 .right-sidebar-extended {
     width: 600px;
 }
+
 .padding-top-small {
     padding-top: 10px;
+}
+
+.search-bar {
+    height: 54px;
+    width: 250px;
+    background-color: #4C9BEF;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.image-grid img {
+    max-width: 100%;
+    height: auto;
+}
+.grey-background {
+    background-color: darkgray;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.white-text {
+    color: white;
+}
+
+.margin-top {
+    padding-top: 50px;
+}
+.margin-bottom {
+    margin-bottom: 20px;
+}
+.padding-bottom-small{
+    padding-bottom: 10px;
+}
+
+.hover-gray:hover {
+    background-color: lightgray;
 }
