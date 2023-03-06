@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register With Us</title>
+  <link rel="stylesheet" href="css/resets.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/forms-exercise.css">
+</head>
+<body>
+<div class="page-wrapper">
+    <main class="container grow">
+        <div class="row">
+            <div class="column align-center justify-center">
+                <form method="post" action="https://request-inspector.glitch.me/">
+                    <div class="row justify-center">
+                        <div class="column justify-center align-center shrink">
+                            <div class="row align-center justify-center">
+                                <div class="column align-center justify-center">
+                                    <h1>HTML Forms</h1>
+                                </div>
+                            </div>
+                            <div id="email-password" class="row align-center justify-center">
+                                <div class="column align-center justify-center">
+                                    <div id="sign-in" class="form-border">
+                                        <label for="email" >Email:</label>
+                                        <input type="text" id="email" name="email">
+                                        <label for="password">Password</label>
+                                        <input type="password" id="password" name="password">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-center">
+                        <div class="column justify-center align-center shrink">
+                            <div id="bio-box" class="form-border">
+                                <h2>Brief bio of yourself:</h2>
+                                <label for="bio"></label>
+                                <textarea id="bio" name="Bio" rows="5" cols="50" placeholder="Bio here"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-center align-center">
+                        <div class="column justify-center align-center shrink">
+                            <div id="hear-about-us" class="form-border">
+                                <h3>How did you hear about us?</h3>
+
+                                <input type="radio" id="billboard" value="billboard" name="hear-about-us">
+                                <label for="billboard">billboard</label>
+
+                                <input type="radio" id="radio-advertisement" value="radio advertisement" name="hear-about-us">
+                                <label for="radio-advertisement">radio advertisement</label>
+
+                                <input type="radio" id="internet-advertisement" value="internet advertisement" name="hear-about-us">
+                                <label for="internet-advertisement">internet advertisement</label>
+
+                                <input type="radio" id="other" value="other" name="hear-about-us">
+                                <label for="other">other</label>
+
+<!--                                Change these inputs so that multiple answers are allowed to be selected.-->
+<!--                                <input type="checkbox" id="billboard-checkbox" value="billboard" name="hear-about-us-checkbox">-->
+<!--                                <label for="billboard-checkbox">billboard</label>-->
+
+<!--                                <input type="checkbox" id="radio-advertisement-checkbox" value="radio advertisement" name="hear-about-us-checkbox">-->
+<!--                                <label for="radio-advertisement-checkbox">radio advertisement</label>-->
+
+<!--                                <input type="checkbox" id="internet-advertisement-checkbox" value="internet advertisement" name="hear-about-us-checkbox">-->
+<!--                                <label for="internet-advertisement-checkbox">internet advertisement</label>-->
+
+<!--                                <input type="checkbox" id="other-checkbox" value="other" name="hear-about-us-checkbox">-->
+<!--                                <label for="other-checkbox">other</label>-->
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-center align-center">
+                        <div class="column justify-center align-center shrink">
+                            <div id="web-browser" class="form-border">
+
+                                <label for="web-browser-dropdown"><h2>What browser are you using?</h2></label>
+                                <select id="web-browser-dropdown" name="web-browser-dropdown">
+                                    <option value="chrome">Chrome</option>
+                                    <option value="firefox">Firefox</option>
+                                    <option value="safari">Safari</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-center align-center">
+                        <div class="column justify-center align-center shrink">
+                            <div id="submit-button" class="form-border">
+                                <input type="submit">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
