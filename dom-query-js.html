@@ -45,15 +45,15 @@
 
         // TODO: Set text color on every other list item to grey
         for (let i = 0; i < listItems.length; i++) {
-            if (i % 2 === 0){
+            if (i % 2 === 1){
                 listItems[i].style.color = "grey";
             }
         }
 
         // TODO: Set text color of li with dbid = 1 to blue
-        let blueTextdbid = document.querySelector("li[data-dbid='1']");
+        let blueTextdbid = document.querySelector("[data-dbid='1']");
         blueTextdbid.style.color = 'blue';
-
+``
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
         let subParagraphs = document.querySelector("p.sub-paragraph");
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
