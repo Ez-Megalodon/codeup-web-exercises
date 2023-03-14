@@ -2,8 +2,3 @@
 *.iml
 .DS_Store
 keys.js
-*.jpg
-*.jpeg
-*.png
-*.svg
-*.webp
