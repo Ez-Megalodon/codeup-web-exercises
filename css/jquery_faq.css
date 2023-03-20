@@ -1,0 +1,13 @@
+.hidden {
+    visibility: hidden;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+dt {
+    font-size: 19px;
+    font-style: italic;
+    font-weight: bold;
+}
