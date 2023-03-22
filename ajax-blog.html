@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/resets.css">
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Categories</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="posts">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+
+(async function () {
+    async function getBlogData (){
+        try {
+            let url = `data/blog.json/`
+            let response = await fetch(url);
+            let data = await response.json();
+            return data;
+        } catch (error){
+            console.log(error);
+        }
+    }
+
+    let blogData = await getBlogData();
+    console.log(blogData);
+
+    async function insertTable(data) {
+        data.forEach((blog) => {
+            let row = document.createElement('tr');
+            row.innerHTML =
+                        `<td>${blog.title}</td>
+                        <td>${blog.content}</td>
+                        <td>${blog.categories}</td>
+                        <td>${blog.date}</td>`
+            document.querySelector('#posts').appendChild(row);
+        })
+    }
+    await insertTable(blogData);
+
+
+})();
+</script>
+
+</body>
+</html>
