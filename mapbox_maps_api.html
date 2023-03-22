@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox</title>
+    <script src="js/keys.js"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/resets.css">
+    <link rel="stylesheet" href="css/layout.css">
+
+</head>
+<body>
+
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="column justify-center align-center">
+                <h1>Mapbox!!!</h1>
+                <div id='map' style='width: 1000px; height: 500px;'></div>
+                <div>
+                    <form>
+                        <label for="zoom">Set Zoom:</label>
+                        <input type="text" name="zoom" id="zoom">
+                        <button id="zoomSubmit">Zoom</button>
+                    </form>
+                    <form>
+                        <label for="setMarker">Enter an Address</label>
+                        <input type="text" name="setMarker" id="setMarker">
+                        <button id="setMarkerButton">Set Marker</button>
+                    </form>
+                    <button type="button" id="removeMarkers">Remove Labels</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script>
+    //mapbox
+    mapboxgl.accessToken = MAPBOX_API_TOKEN;
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/satellite-streets-v12', // style URL
+        center: [-98.3324, 29.56342], // starting position [lng, lat]
+        zoom: 9, // starting zoom
+    });
+    //restaurant info
+    const arrayOfInfo = [
+        {
+            name: "Hawaiian Bro's",
+            bio: "At Hawaiian Bros, we’re inspired every day to spread the Aloha Spirit. To show kindness and respect, and to treat everyone as ’ohana, like family, in everything we do.",
+            address: '7929 Pat Booker Rd, Live Oak, TX 78233',
+            hours: '11AM-12AM',
+            phone: '(210) 308-5533',
+            coords: [-98.3324, 29.56342]
+        },{
+            name: "Urban Bricks",
+            bio: "Urban Bricks Serves Brickin’ Good Pizza + Pasta + Salad In A High-Energy Open Kitchen Environment.",
+            address: '9218 Potranco Rd #103, San Antonio, TX 78251',
+            hours: '12PM-11PM',
+            phone: '(210) 474-0380',
+            coords: [-98.495141, 29.4246]
+        },{
+            name: "Panda Express",
+            bio: "Fast-food chain for Chinese standards, including some health-conscious options.",
+            address: '4248 New Braunfels Ave, San Antonio, TX 78223',
+            hours: '10AM-10PM',
+            phone: '(210) 532-1386',
+            coords: [-98.45778, 29.37575]
+        }
+    ];
+
+    //assign markers and attach info using arrayOfInfo array using forEach
+    arrayOfInfo.forEach((e) => {
+        const newMarker = new mapboxgl.Marker()
+            .setLngLat(e.coords)
+            .addTo(map);
+        const newPopup = new mapboxgl.Popup()
+            .setHTML(`<h3>${e.name}</h3><p>${e.bio}</p><p>Address: ${e.address}</p><p>Hours: ${e.hours}</p><p>Phone: ${e.phone}</p>`)
+        newMarker.setPopup(newPopup);
+
+        //remove markers button
+        document.querySelector('#removeMarkers').addEventListener('click', event => {
+            event.preventDefault();
+            newMarker.remove();
+        })
+    });
+
+</script>
+
+<script src="js/mapbox-exercise.js/"></script>
+</body>
+</html>
