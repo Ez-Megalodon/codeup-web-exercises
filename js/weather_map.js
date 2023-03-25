@@ -1,19 +1,19 @@
-
-//default coords (San Antonio, TX)
-let currentCityArr = [-98.495141 , 29.4246];
+//CURRENT CITY ARRAY
+let currentCityArr = [-98.495141 , 29.4246];//default coords (San Antonio, TX)
 // create a variable to hold the reference of the previous marker
 let previousMarker = null;
 
-// target row to insert forecast cards
+// TARGET ROW TO INSERT FORECAST CARDS
 let forecastRow = document.querySelector('#forecast-row');
 let forecastCard = '';
 
-//load default city on page load
+//LOAD DEFAULT CITY ON PAGE LOAD
 window.addEventListener('load', async function(){
     geocodeNew(currentCityArr);
 });
 
-// */----------------------INTERACTIVE MAP FUNCTIONS-----------------------\*
+// */-------INTERACTIVE MAP FUNCTIONS-------\*
+
 //MAP ITSELF
 mapboxgl.accessToken = MAPBOX_API_TOKEN;
 const map = new mapboxgl.Map({
@@ -34,7 +34,7 @@ document.querySelector('#search-bar-button').addEventListener('click', event => 
     document.querySelector('#searchbar').value = '';
 });
 
-// SET MARKER ON CLICK
+// SET MARKER ON MAP CLICK
 map.on('click', async function(event) {
     // get the latitude and longitude of the clicked point
     const latitude = event.lngLat.lat;
@@ -60,3 +60,15 @@ map.on('click', async function(event) {
     await setCurrentWeather(longitude,latitude);
     await setFiveDayCurrent(longitude,latitude);
 });
+
+document.querySelectorAll('.accordion-button').forEach(button => {
+    button.addEventListener('click', () => {
+        const accordionContent = button.nextElementSibling;
+        button.classList.toggle('accordion-button-active');
+        if (button.classList.contains('accordion-button-active')) {
+            accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+        } else {
+            accordionContent.style.maxHeight = 0;
+        }
+    })
+})

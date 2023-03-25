@@ -19,7 +19,7 @@
             <div class="column shrink">
                 <img src="https://i.gifer.com/68J.gif" alt="sunny gif" class="header-gif">
             </div>
-            <div class="column justify-center align-center shrink">
+            <div class="column justify-center align-center shrink" id="header-author">
                 <h1>Ezra's Weather Page</h1>
             </div>
             <div class="column shrink">
@@ -35,10 +35,15 @@
 
             </div>
         </div>
-<!--        5-DAY FORECAST CARDS-->
-        <div class="row bg-gray justify-space-between" id="forecast-row">
+        <div class="row grow justify-center">
+            <div class="column accordion">
+                    <button type="button" class="accordion-button">Five Day Forecast</button>
+                <div class="row accordion-content" id="forecast-row">
 
+                </div>
+            </div>
         </div>
+<!--        5-DAY FORECAST CARDS-->
 <!--        INTERACTIVE MAP-->
         <div class="row">
             <div class="column search-bar-column">
@@ -48,7 +53,7 @@
                     <label for="searchbar"></label>
                     <input type="text" name="searchbar" id="searchbar" placeholder="Enter city or address">
                     <button id="search-bar-button">GO</button>
-                    <img src="https://www.kindacode.com/wp-content/uploads/2020/12/search.png" id="search-glass">
+                    <img src="https://www.kindacode.com/wp-content/uploads/2020/12/search.png" id="search-glass" alt="magnifying glass icon">
                 </form>
             </div>
         </div>
