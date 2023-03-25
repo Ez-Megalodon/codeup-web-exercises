@@ -37,7 +37,7 @@ async function setCurrentWeather () {
         <img src="https://openweathermap.org/img/w/${current.weather[0].icon}.png" class="current-weather-img" alt="picture depicting the state of the weather.">
         <p>${current.weather[0].description}</p>
         <p>cloud cover: ${current.clouds.all}%</p>
-        <p>temperature: ${Math.round(current.main.temp)}&#8457; Feels like: ${Math.round(current.main.feels_like)}&#8457;</p>
+        <p>temperature: ${Math.round(current.main.temp)}&#8457; feels like: ${Math.round(current.main.feels_like)}&#8457;</p>
         <p>high: ${Math.round(current.main.temp_max)}&#8457;</p>
         <p>low: ${Math.round(current.main.temp_min)}&#8457;</p>
         <p>${Math.round(current.wind.speed)} mph ${getWindDirection(current.wind.deg)}</p>
@@ -49,6 +49,7 @@ async function setFiveDayCurrent () {
     let forecast = await getFiveDayWeatherData(); // get weather API data
     // loop through object list array to grab only one forecast per day
     forecastRow.innerHTML = '';
+    getHighsLows(forecast);
     forecast.list.forEach((forecast, index) => {
         if (index % 8 === 0 && index !== 0){
             //html to create forecast cards
@@ -57,15 +58,46 @@ async function setFiveDayCurrent () {
                     <h2>${getDayOfWeek(forecast.dt)}</h2>
                     <img src="https://openweathermap.org/img/w/${forecast.weather[0].icon}.png" class="forecast-img" alt="picture depicting the state of the weather.">
                     <p>${forecast.weather[0].description}</p>
-                    <p>feels like: ${Math.round(forecast.main.feels_like)}&#8457;</p>
-                    <p>high: ${Math.round(forecast.main.temp_max)}&#8457; low: ${Math.round(forecast.main.temp_min)}&#8457;</p>
                     <p>${forecast.clouds.all}% Cloud coverage</p>
                     <p>wind: ${Math.floor(forecast.wind.speed)} ${getWindDirection(forecast.wind.deg)}, gusts: ${Math.floor(forecast.wind.gust )} mph</p>
+                    <p>feels like: ${Math.round(forecast.main.feels_like)}&#8457;</p>
                     </div>
                     `
             forecastRow.innerHTML += forecastCard;
         }
     });
+}
+
+// <p>high: ${Math.round(forecast.main.temp_max)}&#8457; low: ${Math.round(forecast.main.temp_min)}&#8457;</p>
+
+const getHighsLows = (arr) => {
+    let hours = [];
+    let hours2 = [];
+    let hours3 = [];
+    let hours4 = [];
+    arr.list.forEach((list, i) =>{
+        const time = new Date(list.dt * 1000).getHours();
+        if (i > 8) {
+            if (time >= 3 && time <= 21 && hours.length <= 7) {
+                hours.push(list.main.temp_min, list.main.temp_max)
+            } else if (time >= 3 && time <= 21 && hours2.length <= 7) {
+                hours2.push(list.main.temp_min, list.main.temp_max)
+            } else if (time >= 3 && time <= 21 && hours3.length <= 7) {
+                hours3.push(list.main.temp_min, list.main.temp_max)
+            } else if (time >= 3 && time <= 21 && hours4.length <= 7) {
+                hours4.push(list.main.temp_min, list.main.temp_max)
+            }
+        }
+    });
+    let highLow = {
+        day1: {low: Math.min(...hours), high: Math.max(...hours)},
+        day2: {low: Math.min(...hours2), high: Math.max(...hours2)},
+        day3: {low: Math.min(...hours3), high: Math.max(...hours3)},
+        day4: {low: Math.min(...hours4), high: Math.max(...hours4)}
+    };
+    console.log('HIGHS AND LOWS');
+    console.log(highLow);
+    return highLow;
 }
 
 // get cardinal wind directions based on angle
@@ -111,6 +143,7 @@ function getDayOfWeek(dt){
     }
     return dayOfWeek;
 }
+
 // update city array and fetch new weather data based on new coordinates based on event listeners
 function geocodeNew(address) {
     geocode(address, MAPBOX_API_TOKEN).then(async coords => {

@@ -14,6 +14,7 @@ window.addEventListener('load', async function(){
 });
 
 // */----------------------INTERACTIVE MAP FUNCTIONS-----------------------\*
+
 //MAP ITSELF
 mapboxgl.accessToken = MAPBOX_API_TOKEN;
 const map = new mapboxgl.Map({
