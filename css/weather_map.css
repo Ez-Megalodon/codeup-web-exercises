@@ -2,25 +2,28 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
+.page-wrapper {
+    background-color: rgba(42, 115, 121, 0.76);
+    background-image: url("https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+}
 header {
-    min-height: 10vh;
+    min-height: 5vh;
+    color: white;
 }
 main{
-    min-height: 60vh;
-}
-footer {
-    min-height: 30vh;
+    min-height: 50vh;
 }
 .weather-card {
     min-height: 300px;
     min-width: 200px;
     font-weight: bolder;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
 .weather-card-bg {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgb(175 181 203 / 75%);
     border-radius: 10px;
     border: 2px solid blue;
-    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
 #current-weather-card {
     width: 100%;
@@ -28,16 +31,15 @@ footer {
     min-height: 400px;
     font-size: 20px;
     font-weight: bolder;
+    background-color: rgb(175 181 203 / 75%);
+    border-radius: 10px;
+    border: 2px solid blue;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
-.bg-blue{
-    background-color: blue;
-}
-.bg-gray {
-    background-color: lightblue;
-    border-radius: 20px;
-}
-.bg-red {
-    background-color: red;
+.header-gif{
+    height: 50px;
+    border-radius: 15px;
+    float: left;
 }
 .forecast-img{
     width: 30%;
@@ -50,4 +52,28 @@ footer {
 }
 #map {
     border-radius: 10px;
+}
+.search-bar-column {
+    position: relative;
+}
+#searchbar {
+    position: absolute;
+    left: 412px;
+    top: 271px;
+}
+#search-bar-button {
+    color: white;
+    border: none;
+    position: absolute;
+    left: 598px;
+    top: 272px;
+    background-color: white;
+    height: 28px;
+}
+#search-glass {
+    height: 22px;
+    position: absolute;
+    left: 604px;
+    top: 276px;
+    pointer-events: none;
 }

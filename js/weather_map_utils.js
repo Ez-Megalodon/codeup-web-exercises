@@ -1,13 +1,3 @@
-// for five-day forecast cards
-// day of the week - top centered
-// top left - picture reflecting conditions. -  (to the right) current temp - high-lows
-// weather description - short paragraph from api
-// wind, wind gusts
-// probability of precipitation
-// cloud cover
-
-//picture icon number
-// ${forecast.weather[0].icon}
 
 //FETCH 5 DAY WEATHER FORECAST API
 async function getFiveDayWeatherData () {
@@ -40,41 +30,37 @@ async function getCurrentWeatherData () {
 // set current weather
 async function setCurrentWeather () {
     let current = await getCurrentWeatherData();
+    //html to create weather card
     document.querySelector('#current-weather-card').innerHTML =
         `   
         <h1>${current.name}</h1>
         <img src="https://openweathermap.org/img/w/${current.weather[0].icon}.png" class="current-weather-img" alt="picture depicting the state of the weather.">
-        <p>${current.weather[0].main}</p>
+        <p>${current.weather[0].description}</p>
         <p>cloud cover: ${current.clouds.all}%</p>
-        <p>Temperature: ${Math.round(current.main.temp)}&#8457; Feels like: ${Math.round(current.main.feels_like)}&#8457;</p>
-        <p>High: ${Math.round(current.main.temp_max)}&#8457;</p>
-        <p>Low: ${Math.round(current.main.temp_min)}&#8457;</p>
-        <p>${Math.round(current.wind.speed)} mph ${getWindDirection(current.wind.deg)}, ${Math.round(current.wind.gust)}</p>
+        <p>temperature: ${Math.round(current.main.temp)}&#8457; Feels like: ${Math.round(current.main.feels_like)}&#8457;</p>
+        <p>high: ${Math.round(current.main.temp_max)}&#8457;</p>
+        <p>low: ${Math.round(current.main.temp_min)}&#8457;</p>
+        <p>${Math.round(current.wind.speed)} mph ${getWindDirection(current.wind.deg)}</p>
         `
 }
 
-// target row to insert forecast cards
-let forecastRow = document.querySelector('#forecast-row');
-let forecastCard = '';
-
-//add five-day forecast to cards and populate into html element
+//set 5-day forecast cards
 async function setFiveDayCurrent () {
     let forecast = await getFiveDayWeatherData(); // get weather API data
     // loop through object list array to grab only one forecast per day
     forecastRow.innerHTML = '';
     forecast.list.forEach((forecast, index) => {
-        //
         if (index % 8 === 0 && index !== 0){
-            //CREATE FORECAST CARDS
+            //html to create forecast cards
             forecastCard = `
                     <div class="column weather-card weather-card-bg text-center align-center justify-center">
                     <h2>${getDayOfWeek(forecast.dt)}</h2>
                     <img src="https://openweathermap.org/img/w/${forecast.weather[0].icon}.png" class="forecast-img" alt="picture depicting the state of the weather.">
                     <p>${forecast.weather[0].description}</p>
-                    <p>Feels like: ${Math.round(forecast.main.feels_like)}&#8457;</p>
-                    <p>High: ${Math.round(forecast.main.temp_max)}&#8457; Low: ${Math.round(forecast.main.temp_min)}&#8457;</p>
+                    <p>feels like: ${Math.round(forecast.main.feels_like)}&#8457;</p>
+                    <p>high: ${Math.round(forecast.main.temp_max)}&#8457; low: ${Math.round(forecast.main.temp_min)}&#8457;</p>
                     <p>${forecast.clouds.all}% Cloud coverage</p>
-                    <p>Wind: ${Math.floor(forecast.wind.speed)} ${getWindDirection(forecast.wind.deg)}, Gusts: ${Math.floor(forecast.wind.gust)}</p>
+                    <p>wind: ${Math.floor(forecast.wind.speed)} ${getWindDirection(forecast.wind.deg)}, gusts: ${Math.floor(forecast.wind.gust )} mph</p>
                     </div>
                     `
             forecastRow.innerHTML += forecastCard;
@@ -82,7 +68,7 @@ async function setFiveDayCurrent () {
     });
 }
 
-
+// get cardinal wind directions based on angle
 function getWindDirection( angle ){
     // divide it into 16 sections
     let directions = ["N","NNE","NE","ENE","E",
@@ -90,12 +76,13 @@ function getWindDirection( angle ){
         "SSW","SW","WSW","W",
         "WNW","NW","NNW" ];
     //need to divide in order to get the correct section
-    // int(x) + 1, but parseInt doesn't care, so we are adding 0.5 to it
+    // int(x) + 1, but parseInt doesn't care, so we add 0.5 to it
     let section = parseInt( angle/22.5 + 0.5 );
     //need to make sure it's under 16
     section = section % 16;
     return directions[ section ];
 }
+
 //GET THE DAY OF THE WEEK
 function getDayOfWeek(dt){
     const time = new Date(dt * 1000).getDay();
@@ -123,4 +110,31 @@ function getDayOfWeek(dt){
             dayOfWeek = 'Saturday'
     }
     return dayOfWeek;
+}
+// update city array and fetch new weather data based on new coordinates based on event listeners
+function geocodeNew(address) {
+    geocode(address, MAPBOX_API_TOKEN).then(async coords => {
+        // remove the previous marker if it exists
+        if (previousMarker !== null) {
+            previousMarker.remove();
+        }
+
+        const newMarker = new mapboxgl.Marker()
+            .setLngLat(coords)
+            .addTo(map)
+        map.setCenter(coords);
+
+        // set the previous marker to the new marker
+        previousMarker = newMarker;
+
+        //reset currentCityArr array and push new coordinates for current search
+        currentCityArr = [];
+        currentCityArr.push(coords[0]);
+        currentCityArr.push(coords[1]);
+        console.log('-----updated current city array with searched city------')
+        console.log(currentCityArr);
+        //update weather coordinates
+        await setCurrentWeather(coords[0], coords[1]);
+        await setFiveDayCurrent(coords[0], coords[1]);
+    });
 }
