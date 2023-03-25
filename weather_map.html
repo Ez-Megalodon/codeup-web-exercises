@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map</title>
+    <script src="js/keys.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/resets.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/weather_map.css">
+</head>
+<body>
+<div class="page-wrapper">
+<!--    HEADER-->
+    <header class="container" id="header">
+        <div class="row justify-center align-center">
+            <div class="column justify-center align-center">
+                <h1>Current Weather</h1>
+
+            </div>
+        </div>
+    </header>
+<!--    MAIN-->
+    <main class="container">
+<!--      CURRENT WEATHER SCENE-->
+        <div class="row bg-gray align-center justify-center">
+            <div class="column justify-center align-center shrink" id="current-weather-card">
+
+            </div>
+        </div>
+<!--        5-DAY FORECAST CARDS-->
+        <div class="row bg-gray justify-space-between" id="forecast-row">
+
+        </div>
+<!--        INTERACTIVE MAP-->
+        <div class="row bg-red">
+            <div class="column">
+<!--            MAP DIV-->
+                <div id='map' style='width: 100%; height: 300px;'>
+
+                </div>
+            </div>
+        </div>
+        <div class="row bg-gray justify-center">
+            <div class="column shrink justify-center">
+                <form>
+                    <label for="zoom">Set Zoom:</label>
+                    <input type="text" name="zoom" id="zoom">
+                    <button id="zoomSubmit">Zoom</button>
+                </form>
+            </div>
+            <div class="column shrink justify-center">
+                <form>
+                    <label for="setMarker">Enter an Address</label>
+                    <input type="text" name="setMarker" id="setMarker">
+                    <button id="setMarkerButton">Set Marker</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="js/weather_map_utils.js"></script>
+<script src="js/weather_map.js"></script>
+</body>
+</html>

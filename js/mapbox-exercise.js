@@ -1,10 +1,10 @@
-document.querySelector('#zoomSubmit').addEventListener('click', event => {
+(function () {
+    document.querySelector('#zoomSubmit').addEventListener('click', event => {
     event.preventDefault();
     map.setZoom(document.querySelector('#zoom').value);
 });
 
 document.querySelector('#setMarkerButton').addEventListener('click', event => {
-
     event.preventDefault();
     const address = document.querySelector('#setMarker').value;
     console.log(address);
@@ -17,3 +17,4 @@ document.querySelector('#setMarkerButton').addEventListener('click', event => {
         map.setCenter(coords);
     });
 });
+})();
