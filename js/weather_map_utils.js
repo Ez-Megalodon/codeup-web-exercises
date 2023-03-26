@@ -27,7 +27,7 @@ async function getCurrentWeatherData () {
     }
 }
 
-// set current weather
+// SET CURRENT WEATHER
 async function setCurrentWeather () {
     let current = await getCurrentWeatherData();
     //html to create weather card
@@ -46,7 +46,6 @@ async function setCurrentWeather () {
         <p> <img src="https://www.svgrepo.com/show/436939/sunset-fill.svg" alt="sunset icon" class='p-icon'> Sunset: ${getDayMonthYear(current.sys.sunset).time}</p></p>
         `
 }
-// <img src="https://www.svgrepo.com/show/510932/cloud.svg" alt="cloud icon" class='p-icon'>
 
 //SET 5-DAY FORECAST CARDS
 async function setFiveDayCurrent () {
@@ -106,14 +105,14 @@ const getHighsLows = (arr) => {
     return highLow;
 }
 
-// GET CARDINAL WIND DIRECTIONS BASED ON DEGREES FROM API OBJECT
+// GET CARDINAL WIND DIRECTIONS BASED ON DEGREES
 function getWindDirection( angle ){
     // divide it into 16 sections
     let directions = ["N","NNE","NE","ENE","E",
         "ESE", "SE", "SSE","S",
         "SSW","SW","WSW","W",
         "WNW","NW","NNW" ];
-    //need to divide in order to get the correct section
+    //need to divide the angle in order to get the correct section
     // int(x) + 1, but parseInt doesn't care, so we add 0.5 to it
     let section = parseInt( angle/22.5 + 0.5 );
     //need to make sure it's under 16

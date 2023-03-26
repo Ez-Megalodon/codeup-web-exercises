@@ -8,6 +8,10 @@ body {
 }
 header {
     min-height: 5vh;
+    background-color: rgb(175 181 203 / 75%);
+    border-bottom: 2px solid blue;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    padding: 5px;
 }
 main{
     min-height: 50vh;
@@ -79,13 +83,6 @@ main{
     left: 604px;
     top: 276px;
     pointer-events: none;
-}
-#header-author {
-    background-color: rgb(175 181 203 / 75%);
-    border-radius: 10px;
-    border: 2px solid blue;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-    padding: 5px;
 }
 .accordion-button {
     font-weight: bold;

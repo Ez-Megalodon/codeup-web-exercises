@@ -1,6 +1,6 @@
 //CURRENT CITY ARRAY
 let currentCityArr = [-98.495141 , 29.4246];//default coords (San Antonio, TX)
-// create a variable to hold the reference of the previous marker
+// CREATE A VARIABLE TO HOLD THE  PREVIOUS MARKER
 let previousMarker = null;
 
 // TARGET ROW TO INSERT FORECAST CARDS
@@ -12,9 +12,7 @@ window.addEventListener('load', async function(){
     geocodeNew(currentCityArr);
 });
 
-// */-------INTERACTIVE MAP FUNCTIONS-------\*
-
-//MAP ITSELF
+//MAPBOX GL JS
 mapboxgl.accessToken = MAPBOX_API_TOKEN;
 const map = new mapboxgl.Map({
     container: 'map', // container ID
@@ -61,6 +59,7 @@ map.on('click', async function(event) {
     await setFiveDayCurrent(longitude,latitude);
 });
 
+//ACCORDION FUNCTIONALITY
 document.querySelectorAll('.accordion-button').forEach(button => {
     button.addEventListener('click', () => {
         const accordionContent = button.nextElementSibling;
