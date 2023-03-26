@@ -94,15 +94,12 @@ const getHighsLows = (arr) => {
             }
         }
     });
-    let highLow = {
+    return {
         day1: {low: Math.min(...hours), high: Math.max(...hours)},
         day2: {low: Math.min(...hours2), high: Math.max(...hours2)},
         day3: {low: Math.min(...hours3), high: Math.max(...hours3)},
         day4: {low: Math.min(...hours4), high: Math.max(...hours4)}
     };
-    console.log('HIGHS AND LOWS');
-    console.log(highLow);
-    return highLow;
 }
 
 // GET CARDINAL WIND DIRECTIONS BASED ON DEGREES

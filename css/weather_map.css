@@ -59,6 +59,7 @@ main{
 }
 #map {
     border-radius: 10px;
+    border: 2px solid blue;
 }
 .search-bar-column {
     position: relative;
@@ -66,22 +67,24 @@ main{
 #searchbar {
     position: absolute;
     left: 412px;
-    top: 271px;
+    top: 268px;
+    border-radius: 10px 0 0 10px;
 }
 #search-bar-button {
     color: white;
     border: none;
     position: absolute;
     left: 598px;
-    top: 272px;
+    top: 270px;
     background-color: white;
-    height: 28px;
+    height: 26px;
+    border-radius: 0 10px 10px 0;
 }
 #search-glass {
     height: 22px;
     position: absolute;
-    left: 604px;
-    top: 276px;
+    left: 607px;
+    top: 272px;
     pointer-events: none;
 }
 .accordion-button {
@@ -108,7 +111,7 @@ main{
     content: '\25b4';
 }
 .accordion-button-active {
-    background-color: #9b9999;
+    background-color: rgba(117, 144, 243, 0.7);
     border-radius: 10px 10px 0 0;
 }
 .accordion-content {
