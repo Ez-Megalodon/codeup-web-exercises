@@ -37,7 +37,7 @@ async function setCurrentWeather () {
         <h1>${current.name}</h1>
         <p>${getDayMonthYear(current.dt).month} ${getDayMonthYear(current.dt).date} ${getDayMonthYear(current.dt).year}</p>
         <img src="https://openweathermap.org/img/w/${current.weather[0].icon}.png" class="current-weather-img" alt="picture depicting the state of the weather.">
-        <p>${current.weather[0].description}</p>
+        <p>${capitalizeWeatherDesc(current.weather[0].description)}</p>
         <p><img src="https://www.svgrepo.com/show/510932/cloud.svg" alt="cloud icon" class='p-icon'> Cloud cover: ${current.clouds.all}%</p>
         <p><img src="https://www.svgrepo.com/show/432327/temp-high.svg" alt="temperature icon" class='p-icon'> Temperature: ${Math.round(current.main.temp)}&#8457;,  Feels like: ${Math.round(current.main.feels_like)}&#8457;</p>
         <p><img src="https://www.svgrepo.com/show/470163/up-arrow.svg" alt="up arrow icon" class='p-icon'> High: ${Math.round(current.main.temp_max)}&#8457;</p>
@@ -63,7 +63,7 @@ async function setFiveDayCurrent () {
                     <h2>${getDayMonthYear(forecast.dt).day}</h2>
                     <p>${getDayMonthYear(forecast.dt).month} ${getDayMonthYear(forecast.dt).date} ${getDayMonthYear(forecast.dt).year}</p>
                     <img src="https://openweathermap.org/img/w/${forecast.weather[0].icon}.png" class="forecast-img" alt="picture depicting the state of the weather.">
-                    <p>${forecast.weather[0].description}</p>
+                    <p>${capitalizeWeatherDesc(forecast.weather[0].description)}</p>
                     <p>${forecast.clouds.all}% Cloud coverage</p>
                     <p>Wind: ${Math.floor(forecast.wind.speed)} ${getWindDirection(forecast.wind.deg)}, Gusts: ${Math.floor(forecast.wind.gust )} mph</p>
                     <p>Feels like: ${Math.round(forecast.main.feels_like)}&#8457;</p>
@@ -181,4 +181,9 @@ const getDayMonthYear = (dt) => {
         year: year,
         time: hourMin
     }
+}
+
+//CAPITALIZE FIRST WORD IN WEATHER DESCRIPTIONS
+const capitalizeWeatherDesc = (string) => {
+    return string.replace(string.charAt(0), string.charAt(0).toUpperCase());
 }
