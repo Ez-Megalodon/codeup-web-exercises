@@ -29,8 +29,9 @@ async function getCurrentWeatherData () {
 
 // SET CURRENT WEATHER
 async function setCurrentWeather () {
+    //fetch current day data API
     let current = await getCurrentWeatherData();
-    //html to create weather card
+    //select html element to add html code and create weather card
     document.querySelector('#current-weather-card').innerHTML =
         `   
         <h1>${current.name}</h1>
@@ -38,7 +39,7 @@ async function setCurrentWeather () {
         <img src="https://openweathermap.org/img/w/${current.weather[0].icon}.png" class="current-weather-img" alt="picture depicting the state of the weather.">
         <p>${current.weather[0].description}</p>
         <p><img src="https://www.svgrepo.com/show/510932/cloud.svg" alt="cloud icon" class='p-icon'> Cloud cover: ${current.clouds.all}%</p>
-        <p><img src="https://www.svgrepo.com/show/432327/temp-high.svg" alt="temperature icon" class='p-icon'> Temperature: ${Math.round(current.main.temp)}&#8457; Feels like: ${Math.round(current.main.feels_like)}&#8457;</p>
+        <p><img src="https://www.svgrepo.com/show/432327/temp-high.svg" alt="temperature icon" class='p-icon'> Temperature: ${Math.round(current.main.temp)}&#8457;,  Feels like: ${Math.round(current.main.feels_like)}&#8457;</p>
         <p><img src="https://www.svgrepo.com/show/470163/up-arrow.svg" alt="up arrow icon" class='p-icon'> High: ${Math.round(current.main.temp_max)}&#8457;</p>
         <p><img src="https://www.svgrepo.com/show/464780/down-arrow.svg" alt="down arrow icon" class='p-icon'> Low: ${Math.round(current.main.temp_min)}&#8457;</p>
         <p><img src="https://www.svgrepo.com/show/497671/wind.svg" alt="wind icon" class='p-icon'> Wind: ${Math.round(current.wind.speed)} mph ${getWindDirection(current.wind.deg)}</p>
@@ -50,14 +51,14 @@ async function setCurrentWeather () {
 //SET 5-DAY FORECAST CARDS
 async function setFiveDayCurrent () {
     let forecast = await getFiveDayWeatherData(); // get weather API data
+    forecastRow.innerHTML = ''; //reset any previous cards already populated
+    const highLow = getHighsLows(forecast); //get each day's high and low temperature
     // loop through object list array to grab only one forecast per day
-    forecastRow.innerHTML = '';
-    const highLow = getHighsLows(forecast);
     forecast.list.forEach((forecast, index) => {
         if (index % 8 === 0 && index !== 0){
-            //html to create forecast cards
-            //used the same math of (index % 8 ===0) to pull the desired properties from getHighLows Function
-            forecastCard = `
+            //store html into forecastCard variable
+            forecastCard =
+                `
                     <div class="column weather-card weather-card-bg text-center align-center justify-center">
                     <h2>${getDayMonthYear(forecast.dt).day}</h2>
                     <p>${getDayMonthYear(forecast.dt).month} ${getDayMonthYear(forecast.dt).date} ${getDayMonthYear(forecast.dt).year}</p>
@@ -68,53 +69,10 @@ async function setFiveDayCurrent () {
                     <p>Feels like: ${Math.round(forecast.main.feels_like)}&#8457;</p>
                     <p>High: ${Math.round(highLow['day' + (index/8)].high)}&#8457; Low: ${Math.round(highLow['day' + (index/8)].low)}&#8457;</p>
                     </div>
-                    `
-            forecastRow.innerHTML += forecastCard;
+                `          //end template literal
+            forecastRow.innerHTML += forecastCard; //send variable containing html code to html parent
         }
     });
-}
-
-//GET THE HIGH AND LOW TEMPERATURE'S FROM EACH DAY
-const getHighsLows = (arr) => {
-    let hours = [];
-    let hours2 = [];
-    let hours3 = [];
-    let hours4 = [];
-    arr.list.forEach((list, i) =>{
-        const time = new Date(list.dt * 1000).getHours();
-        if (i > 8) {
-            if (time >= 3 && time <= 21 && hours.length <= 7) {
-                hours.push(list.main.temp_min, list.main.temp_max)
-            } else if (time >= 3 && time <= 21 && hours2.length <= 7) {
-                hours2.push(list.main.temp_min, list.main.temp_max)
-            } else if (time >= 3 && time <= 21 && hours3.length <= 7) {
-                hours3.push(list.main.temp_min, list.main.temp_max)
-            } else if (time >= 3 && time <= 21 && hours4.length <= 7) {
-                hours4.push(list.main.temp_min, list.main.temp_max)
-            }
-        }
-    });
-    return {
-        day1: {low: Math.min(...hours), high: Math.max(...hours)},
-        day2: {low: Math.min(...hours2), high: Math.max(...hours2)},
-        day3: {low: Math.min(...hours3), high: Math.max(...hours3)},
-        day4: {low: Math.min(...hours4), high: Math.max(...hours4)}
-    };
-}
-
-// GET CARDINAL WIND DIRECTIONS BASED ON DEGREES
-function getWindDirection( angle ){
-    // divide it into 16 sections
-    let directions = ["N","NNE","NE","ENE","E",
-        "ESE", "SE", "SSE","S",
-        "SSW","SW","WSW","W",
-        "WNW","NW","NNW" ];
-    //need to divide the angle in order to get the correct section
-    // int(x) + 1, but parseInt doesn't care, so we add 0.5 to it
-    let section = parseInt( angle/22.5 + 0.5 );
-    //need to make sure it's under 16
-    section = section % 16;
-    return directions[ section ];
 }
 
 // UPDATE CURRENT CITY ARRAY AND FETCH NEW WEATHER DATA BASED ON NEW COORDINATES BASED ON EVENT LISTENERS
@@ -125,6 +83,7 @@ function geocodeNew(address) {
             previousMarker.remove();
         }
 
+        //set new mapbox marker
         const newMarker = new mapboxgl.Marker()
             .setLngLat(coords)
             .addTo(map)
@@ -142,6 +101,54 @@ function geocodeNew(address) {
         await setCurrentWeather(coords[0], coords[1]);
         await setFiveDayCurrent(coords[0], coords[1]);
     });
+}
+
+//GET THE HIGH AND LOW TEMPERATURE FROM EACH DAY
+const getHighsLows = (arr) => {
+    //create arrays to hold the temperatures
+    let hours = [];
+    let hours2 = [];
+    let hours3 = [];
+    let hours4 = [];
+    //loop through the list to store temperatures throughout each day
+    arr.list.forEach((list, i) =>{
+        const time = new Date(list.dt * 1000).getHours();
+        //skip the first day's temperatures since we retrieve that through current day API
+        if (i > 8) {
+            //grab 7 of the 3-hour blocks of forecasts for each day
+            if (time >= 3 && time <= 21 && hours.length <= 7) {
+                hours.push(list.main.temp_min, list.main.temp_max)
+            } else if (time >= 3 && time <= 21 && hours2.length <= 7) {
+                hours2.push(list.main.temp_min, list.main.temp_max)
+            } else if (time >= 3 && time <= 21 && hours3.length <= 7) {
+                hours3.push(list.main.temp_min, list.main.temp_max)
+            } else if (time >= 3 && time <= 21 && hours4.length <= 7) {
+                hours4.push(list.main.temp_min, list.main.temp_max)
+            }
+        }
+    });
+    //return high and lows from each day array
+    return {
+        day1: {low: Math.min(...hours), high: Math.max(...hours)},
+        day2: {low: Math.min(...hours2), high: Math.max(...hours2)},
+        day3: {low: Math.min(...hours3), high: Math.max(...hours3)},
+        day4: {low: Math.min(...hours4), high: Math.max(...hours4)}
+    };
+}
+
+// GET CARDINAL WIND DIRECTIONS BASED ON DEGREES
+function getWindDirection( angle ){
+    // make array with the 16 cardinal directions
+    let directions = ["N","NNE","NE","ENE","E",
+        "ESE", "SE", "SSE","S",
+        "SSW","SW","WSW","W",
+        "WNW","NW","NNW" ];
+    //need to divide the angle in order to get the correct section
+    // int(x) + 1, but parseInt doesn't care, so we add 0.5 to it
+    let section = parseInt( angle/22.5 + 0.5 );
+    //need to make sure it's under 16
+    section = section % 16;
+    return directions[ section ];
 }
 
 //GET THE TIME BASED ON OBJECT TIMESTAMP
@@ -162,9 +169,9 @@ const getDayMonthYear = (dt) => {
         getMin = '0'+ getMin;
     }
     if (getHour > 12){
-        hourMin = getHour - 12 + ':' + getMin +'PM';
+        hourMin = getHour - 12 + ':' + getMin +'pm';
     } else {
-        hourMin = getHour + ':' + getMin +'AM';
+        hourMin = getHour + ':' + getMin + 'am';
     }
     return {
         day: day,

@@ -6,9 +6,36 @@ body {
     background-color: rgba(42, 115, 121, 0.76);
     background-image: url("https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
 }
-
-main{
-    min-height: 50vh;
+.header-name {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 3px 10px;
+    background-color: rgb(175 181 203 / 75%);
+    border-radius: 10px;
+    border: 2px solid blue;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+.header-row {
+    padding: 0;
+    background-color: rgba(35, 35, 35, 0.49);
+    border-radius: 10px;
+    border: 2px solid blue;
+}
+.header-gif{
+    margin: 0 15px 0 15px;
+    height: 50px;
+    border-radius: 15px;
+    float: left;
+}
+#current-weather-card {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: rgb(175 181 203 / 75%);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
 .weather-card {
     margin: 10px 0;
@@ -21,25 +48,7 @@ main{
 .weather-card-bg {
     background-color: rgb(175 181 203 / 75%);
     border-radius: 10px;
-    border: 2px solid blue;
     box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-}
-#current-weather-card {
-    width: 100%;
-    height: 100%;
-    min-height: 400px;
-    font-size: 20px;
-    font-weight: bolder;
-    background-color: rgb(175 181 203 / 75%);
-    border-radius: 10px;
-    border: 2px solid blue;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-}
-.header-gif{
-    margin: 0 15px 0 15px;
-    height: 50px;
-    border-radius: 15px;
-    float: left;
 }
 .forecast-img{
     width: 30%;
@@ -52,70 +61,7 @@ main{
 }
 #map {
     border-radius: 10px;
-    border: 2px solid blue;
-}
-.search-bar-column {
-    position: relative;
-}
-#searchbar {
-    position: absolute;
-    left: 412px;
-    top: 268px;
-    border-radius: 10px 0 0 10px;
-}
-#search-bar-button {
-    color: white;
-    border: none;
-    position: absolute;
-    left: 598px;
-    top: 270px;
-    background-color: white;
-    height: 26px;
-    border-radius: 0 10px 10px 0;
-}
-#search-glass {
-    height: 22px;
-    position: absolute;
-    left: 607px;
-    top: 272px;
-    pointer-events: none;
-}
-.accordion-button {
-    font-weight: bold;
-    font-size: 25px;
-    display: block;
-    width: 100%;
-    padding: 15px;
-    outline: none;
-    cursor: pointer;
-    color: #000;
-    transition: background-color 0.2s;
-    background-color: rgb(175 181 203 / 75%);
-    border-radius: 10px;
-    border: 2px solid blue;
     box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-}
-.accordion-button::after {
-    color: black;
-    content: '\25be';
-}
-.accordion-button-active::after {
-    color: black;
-    content: '\25b4';
-}
-.accordion-button-active {
-    background-color: rgba(117, 144, 243, 0.7);
-    border-radius: 10px 10px 0 0;
-}
-.accordion-content {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.2s;
-    background-color: rgba(35, 35, 35, 0.49);
-    border-radius: 0 0 20px 20px;
-}
-p {
-    border-bottom: rgba(0, 0, 0, 1);
 }
 .p-icon {
     height: 20px;
@@ -129,18 +75,68 @@ p {
     border-radius: 10px;
     border: 2px solid blue;
 }
-.header-name {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 3px 10px;
+/*SEARCH BAR*/
+.search-bar-column {
+    position: relative;
+}
+#searchbar {
+    position: absolute;
+    left: 134px;
+    top: 370px;
+    border-radius: 10px;
+    height: 30px;
+    width: 220px;
+}
+#search-bar-button {
+    color: white;
+    border: none;
+    position: absolute;
+    left: 318px;
+    top: 372px;
+    background-color: white;
+    height: 26px;
+    border-radius: 0 10px 10px 0;
+}
+#search-glass {
+    height: 22px;
+    position: absolute;
+    left: 328px;
+    top: 374px;
+    pointer-events: none;
+}
+/*ACCORDION*/
+.accordion-button {
+    font-weight: bold;
+    font-size: 25px;
+    display: block;
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    cursor: pointer;
+    color: #000;
+    transition: background-color 0.2s;
     background-color: rgb(175 181 203 / 75%);
     border-radius: 10px;
-    border: 2px solid blue;
     box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
-.header-row {
-    padding: 0;
+.accordion-button::after {
+    color: black;
+    content: '\25be';
+    margin-left: 20px;
+}
+.accordion-button-active::after {
+    color: black;
+    content: '\25b4';
+    margin-left: 20px;
+}
+.accordion-button-active {
+    background-color: rgba(117, 144, 243, 0.7);
+    border-radius: 10px 10px 0 0;
+}
+.accordion-content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s;
     background-color: rgba(35, 35, 35, 0.49);
-    border-radius: 10px;
-    border: 2px solid blue;
+    border-radius: 0 0 20px 20px;
 }

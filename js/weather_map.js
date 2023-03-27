@@ -51,22 +51,28 @@ map.on('click', async function(event) {
 
     // center the map on the new marker
     map.setCenter([longitude, latitude]);
+    //reset and push new coords to update the API fetch
     currentCityArr = [];
     currentCityArr.push(longitude);
     currentCityArr.push(latitude);
 
+    //update displayed weather cards
     await setCurrentWeather(longitude,latitude);
     await setFiveDayCurrent(longitude,latitude);
 });
 
-//ACCORDION FUNCTIONALITY
+//ACCORDION ANIMATION FUNCTIONALITY
 document.querySelectorAll('.accordion-button').forEach(button => {
     button.addEventListener('click', () => {
+        //target accordion-content
         const accordionContent = button.nextElementSibling;
+        //add toggle to classList
         button.classList.toggle('accordion-button-active');
         if (button.classList.contains('accordion-button-active')) {
+            //if class is toggled then allow accordion content to have as much height as needed
             accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
         } else {
+            //if class is not toggled then set max height to 0
             accordionContent.style.maxHeight = 0;
         }
     })
