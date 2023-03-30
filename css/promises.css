@@ -1,0 +1,37 @@
+.user-card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 200px;
+}
+.img-wrapper {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 9999px;
+}
+.img-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+h2 {
+    font-size: 26px;
+    font-weight: 600;
+}
+.user-card a {
+
+}
+.row.align-center {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
