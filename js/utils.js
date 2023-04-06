@@ -50,7 +50,7 @@ const isNumericAndNotNaN = (input) =>{
 }
 
 //------create a random number between two numbers------
-const randomNumber = (min, max) => {
+export const randomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -90,11 +90,11 @@ dropdowns.forEach(function(dropdown){
         dropdown.classList.toggle('open');
     });
 });
-pageWrapper.addEventListener('click', function(event){
-    //if the event target is not a dropdown, close all dropdowns
-    if (!event.target.closest('[data-dropdown="parent"]')) {
-        dropdowns.forEach(function(dropdown){
-            dropdown.classList.remove('open');
-        });
-    }
-});
+// pageWrapper.addEventListener('click', function(event){
+//     //if the event target is not a dropdown, close all dropdowns
+//     if (!event.target.closest('[data-dropdown="parent"]')) {
+//         dropdowns.forEach(function(dropdown){
+//             dropdown.classList.remove('open');
+//         });
+//     }
+// });
